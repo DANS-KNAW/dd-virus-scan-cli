@@ -38,6 +38,7 @@
         <main-class>nl.knaw.dans.virusscancli.DdVirusScanCli</main-class>
         <command-name>virus-scan</command-name>
         <dd-virus-scan-api.version>0.2.0-SNAPSHOT</dd-virus-scan-api.version>
+        <dans-java-utils.version>4.1.0</dans-java-utils.version>
     </properties>
 
     <scm>

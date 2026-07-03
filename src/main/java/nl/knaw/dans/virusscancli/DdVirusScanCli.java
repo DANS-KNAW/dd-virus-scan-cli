@@ -26,7 +26,6 @@ import nl.knaw.dans.virusscancli.client.DefaultApi;
 import nl.knaw.dans.virusscancli.command.ScanFiles;
 import nl.knaw.dans.virusscancli.command.ScanStatus;
 import nl.knaw.dans.virusscancli.config.DdVirusScanCliConfig;
-import picocli.AutoComplete.GenerateCompletion;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 
@@ -48,16 +47,15 @@ public class DdVirusScanCli extends AbstractCommandLineApp<DdVirusScanCliConfig>
     public void configureCommandLine(CommandLine commandLine, DdVirusScanCliConfig config) {
         log.debug("Configuring command line");
         var api = new ClientProxyBuilder<ApiClient, DefaultApi>()
-            .apiClient(new ApiClient())
+            .apiClientCtor(ApiClient::new)
             .basePath(config.getVirusScanService().getUrl())
             .httpClient(config.getVirusScanService().getHttpClient())
-            .defaultApiCtor(DefaultApi::new)
+            .proxyCtor(DefaultApi::new)
             .build();
         var objectMapper = new ObjectMapper();
         commandLine
             .addSubcommand(new ScanFiles(api))
-            .addSubcommand(new ScanStatus(api, objectMapper))
-            .addSubcommand(new GenerateCompletion());
+            .addSubcommand(new ScanStatus(api, objectMapper));
     }
 }
 
