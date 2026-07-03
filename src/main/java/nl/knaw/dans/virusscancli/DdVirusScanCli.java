@@ -16,9 +16,15 @@
 
 package nl.knaw.dans.virusscancli;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import nl.knaw.dans.lib.util.AbstractCommandLineApp;
+import nl.knaw.dans.lib.util.ClientProxyBuilder;
 import nl.knaw.dans.lib.util.PicocliVersionProvider;
+import nl.knaw.dans.virusscancli.client.ApiClient;
+import nl.knaw.dans.virusscancli.client.DefaultApi;
+import nl.knaw.dans.virusscancli.command.ScanFiles;
+import nl.knaw.dans.virusscancli.command.ScanStatus;
 import nl.knaw.dans.virusscancli.config.DdVirusScanCliConfig;
 import picocli.AutoComplete.GenerateCompletion;
 import picocli.CommandLine;
@@ -40,8 +46,18 @@ public class DdVirusScanCli extends AbstractCommandLineApp<DdVirusScanCliConfig>
 
     @Override
     public void configureCommandLine(CommandLine commandLine, DdVirusScanCliConfig config) {
-        // TODO: set up the API client, if applicable
         log.debug("Configuring command line");
-        // TODO: add options and subcommands
+        var api = new ClientProxyBuilder<ApiClient, DefaultApi>()
+            .apiClient(new ApiClient())
+            .basePath(config.getVirusScanService().getUrl())
+            .httpClient(config.getVirusScanService().getHttpClient())
+            .defaultApiCtor(DefaultApi::new)
+            .build();
+        var objectMapper = new ObjectMapper();
+        commandLine
+            .addSubcommand(new ScanFiles(api))
+            .addSubcommand(new ScanStatus(api, objectMapper))
+            .addSubcommand(new GenerateCompletion());
     }
 }
+
