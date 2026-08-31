@@ -37,7 +37,7 @@
     <properties>
         <main-class>nl.knaw.dans.virusscancli.DdVirusScanCli</main-class>
         <command-name>virus-scan</command-name>
-        <dd-virus-scan-api.version>0.2.0-SNAPSHOT</dd-virus-scan-api.version>
+        <dd-virus-scan-api.version>0.2.0</dd-virus-scan-api.version>
     </properties>
 
     <scm>
