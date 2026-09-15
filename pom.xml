@@ -30,7 +30,7 @@
 
     <name>Dd Virus Scan Cli</name>
     <description>Command-line client for the dd-virus-scan service</description>
-    <url>https://github.com/DANS-KNAW/dd-virus-scan-cli</url>
+    <url>https://dans-knaw.github.io/dd-virus-scan-cli</url>
     <inceptionYear>2026</inceptionYear>
 
     <scm>
