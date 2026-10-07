@@ -43,7 +43,6 @@
     <properties>
         <main-class>nl.knaw.dans.virusscancli.DdVirusScanCli</main-class>
         <command-name>virus-scan</command-name>
-        <dd-virus-scan-api.version>0.2.0</dd-virus-scan-api.version>
     </properties>
 
     <dependencies>
@@ -107,7 +106,6 @@
         <dependency>
             <groupId>nl.knaw.dans</groupId>
             <artifactId>dd-virus-scan-api</artifactId>
-            <version>${dd-virus-scan-api.version}</version>
         </dependency>
     </dependencies>
 
