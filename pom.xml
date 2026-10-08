@@ -26,7 +26,7 @@
     </parent>
 
     <artifactId>dd-virus-scan-cli</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
 
     <name>Dd Virus Scan Cli</name>
     <description>Command-line client for the dd-virus-scan service</description>
@@ -36,7 +36,7 @@
     <scm>
         <connection>scm:git:https://github.com/DANS-KNAW/dd-virus-scan-cli</connection>
         <developerConnection>scm:git:ssh://github.com/DANS-KNAW/dd-virus-scan-cli</developerConnection>
-        <tag>HEAD</tag>
+        <tag>v0.1.0</tag>
         <url>https://github.com/DANS-KNAW/dd-virus-scan-cli</url>
     </scm>
 
